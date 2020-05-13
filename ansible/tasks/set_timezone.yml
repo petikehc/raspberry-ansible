@@ -1,0 +1,6 @@
+- name: Setting time zone to Australia/Brisbane
+  become: yes
+  shell: timedatectl set-timezone Australia/Brisbane
+- name: Turning NTP on
+  become: yes
+  shell: timedatectl set-ntp True

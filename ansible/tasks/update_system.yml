@@ -1,0 +1,7 @@
+- apt: update_cache=yes
+  become: yes
+  become_method: sudo
+
+- apt: upgrade=dist
+  become: yes
+  become_method: sudo

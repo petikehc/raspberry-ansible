@@ -1,0 +1,9 @@
+- hosts: solarpi
+  remote_user: pi
+  tasks:
+    - include:
+        tasks/set_timezone.yml
+    - include:
+        tasks/update_system.yml
+    - include:
+        tasks/install_packages.yml
