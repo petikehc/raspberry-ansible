@@ -1,5 +1,7 @@
 - hosts: solarpi
   remote_user: pi
+  become: yes
+  become_method: sudo
   tasks:
     - include:
         tasks/set_timezone.yml
@@ -7,3 +9,5 @@
         tasks/update_system.yml
     - include:
         tasks/install_packages.yml
+    - include:
+        tasks/enable_i2c.yml

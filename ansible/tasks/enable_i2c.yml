@@ -1,0 +1,9 @@
+- name: Register current value of i2c from raspi-config
+  shell: raspi-config nonint get_i2c
+  register: current_i2c
+  changed_when: current_i2c == 1
+
+- name: Enabl I2C on Raspberry Pi
+  shell: raspi-config nonint do_i2c 0
+  when: current_i2c == 1
+
