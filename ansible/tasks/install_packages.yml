@@ -4,8 +4,9 @@
       - build-essential
       - python-dev
       - python-smbus
-      - python-pip
+      - python3-pip
       - git
+      - vim
     state: latest
 
-- pip: name=virtualenv
+- pip: name=virtualenv executable=pip3

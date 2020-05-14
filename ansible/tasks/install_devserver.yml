@@ -10,9 +10,14 @@
     repo: https://github.com/petikehc/solarpi.git
     dest: /var/www/devserver
 
+- lineinfile:
+    dest=/home/{{ ansible_ssh_user }}/.bashrc
+    line="alias python='/usr/bin/python3'"
+
 - pip:
     requirements=/var/www/devserver/webapp/requirements.txt
     virtualenv=/var/www/devserver/webapp/venv
+    virtualenv_python=python3
 
 - lineinfile:
     dest=/home/{{ ansible_ssh_user }}/.bashrc
