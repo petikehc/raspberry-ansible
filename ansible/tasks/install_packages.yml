@@ -1,9 +1,11 @@
 - name: Install packages
-  become: yes
   package:
     name:
       - build-essential
       - python-dev
       - python-smbus
+      - python-pip
       - git
     state: latest
+
+- pip: name=virtualenv

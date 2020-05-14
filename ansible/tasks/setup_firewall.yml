@@ -1,0 +1,20 @@
+- name: Install firewall
+  package:
+    name:
+      - ufw
+    state: latest
+    update_cache: yes
+
+- name: Enable logging
+  ufw:
+    logging: on
+
+- name: Allow local traffic
+  ufw:
+    rule: allow
+    src: 192.168.0.0/24
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: allow

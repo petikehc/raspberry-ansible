@@ -1,4 +1,4 @@
-Raspberry Pi Ansible
+Solar Pi
 ===
 
 Generate SSH Key for Raspberry Pi
@@ -21,9 +21,6 @@ Install and configure Ansible on MacOS
 2. Setup host file in `/etc/ansible/hosts`
 
 ```ini
-[pi-hole]
-192.168.1.2
-
 [solarpi]
 192.168.1.231
 ```
@@ -37,6 +34,6 @@ This may cause an error first, as SSH will need to be set up too.
 Provision Raspberry Pi
 ---
 
-Run the following command in the ansible directory:
+Run the following command in the ansible directory to configure the Raspberry Pi:
 
 `ansible-playbook solarpi.yml`

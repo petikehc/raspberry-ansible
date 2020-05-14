@@ -8,10 +8,10 @@
   register: current_ntp
   changed_when: current_ntp == 0
 
-- name: Setting time zone to Australia/Brisbane
+- name: Set time zone to Australia/Brisbane
   shell: timedatectl set-timezone Australia/Brisbane
   when:  current_timezone == 0
 
-- name: Turning NTP on
+- name: Turn NTP on
   shell: timedatectl set-ntp True
   when: current_ntp == 0

@@ -3,7 +3,6 @@
   register: current_i2c
   changed_when: current_i2c == 1
 
-- name: Enabl I2C on Raspberry Pi
+- name: Enable I2C on Raspberry Pi
   shell: raspi-config nonint do_i2c 0
   when: current_i2c == 1
-
