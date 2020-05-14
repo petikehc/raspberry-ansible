@@ -9,3 +9,11 @@
 - git:
     repo: https://github.com/petikehc/solarpi.git
     dest: /var/www/devserver
+
+- pip:
+    requirements=/var/www/devserver/webapp/requirements.txt
+    virtualenv=/var/www/devserver/webapp/venv
+
+- lineinfile:
+    dest=/home/{{ ansible_ssh_user }}/.bashrc
+    line="source /var/www/devserver/webapp/venv/bin/activate"
