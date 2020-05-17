@@ -7,8 +7,24 @@
 - name: Install InfluxDB packages
   apt: name=influxdb state=present
 
-- name: Start the InfluxDB service
-  service: name=influxdb state=restarted enabled=yes masked=no
+- name: Ensure Restart=always is in section [Service] in influxdb.service
+  ini_file:
+    path: /lib/systemd/system/influxdb.service
+    create: no
+    section: Service
+    option: Restart
+    value: always
+    mode: '0644'
+    no_extra_spaces: yes
+    backup: yes
+
+- name: Issue Daemon reload and start the InfluxDB service
+  systemd:
+    name: influxdb
+    state: restarted
+    enabled: yes
+    masked: no
+    daemon_reload: yes
 
 - name: Pause for InfluxDB service
   pause: seconds=50

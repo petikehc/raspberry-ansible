@@ -3,6 +3,21 @@
     name: nginx
     state: latest
 
-- service:
-    name=nginx
-    state=restarted
+- name: Ensure Restart=always is in section [Service] in nginx.service
+  ini_file:
+    path: /lib/systemd/system/nginx.service
+    create: no
+    section: Service
+    option: Restart
+    value: always
+    mode: '0644'
+    no_extra_spaces: yes
+    backup: yes
+
+- name: Issue Daemon reload and start the nginx service
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+    masked: no
+    daemon_reload: yes
