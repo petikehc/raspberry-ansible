@@ -1,0 +1,18 @@
+- name: Import InfluxDB GPG signing key
+  apt_key: url=https://repos.influxdata.com/influxdb.key state=present
+
+- name: Add InfluxDB repository
+  apt_repository: repo='deb https://repos.influxdata.com/debian buster stable' state=present
+
+- name: Install InfluxDB packages
+  apt: name=influxdb state=present
+
+- name: Start the InfluxDB service
+  service: name=influxdb state=restarted enabled=yes masked=no
+
+- name: Pause for InfluxDB service
+  pause: seconds=50
+
+- name: Create solarpi database
+  command: /usr/bin/influx -execute 'CREATE DATABASE solarpi'
+  ignore_errors: yes

@@ -10,6 +10,8 @@
     - include:
         tasks/install_packages.yml
     - include:
+        tasks/install_influxdb.yml
+    - include:
         tasks/setup_firewall.yml
     - include:
         tasks/enable_i2c.yml
