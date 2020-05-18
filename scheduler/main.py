@@ -2,7 +2,7 @@ from datetime import datetime
 import time
 import os
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig()
 logger = logging.getLogger(__name__)
 
 
