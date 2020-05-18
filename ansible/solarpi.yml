@@ -18,4 +18,4 @@
     - include:
         tasks/install_nginx.yml
     - include:
-        tasks/install_devserver.yml
+        tasks/install_application.yml
