@@ -18,7 +18,7 @@
     no_extra_spaces: yes
     backup: yes
 
-- name: Issue Daemon reload and start the InfluxDB service
+- name: Issue daemon-reload and start the InfluxDB service
   systemd:
     name: influxdb
     state: restarted

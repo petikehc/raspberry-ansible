@@ -1,6 +1,6 @@
 - name: Create directory for devserver files
   file:
-    path: /var/www/devserver
+    path: /opt/solarpi/devserver
     state: directory
     mode: '0755'
     owner: '{{ ansible_ssh_user }}'
@@ -8,17 +8,32 @@
 
 - git:
     repo: https://github.com/petikehc/solarpi.git
-    dest: /var/www/devserver
+    dest: /opt/solarpi/devserver
 
 - lineinfile:
     dest=/home/{{ ansible_ssh_user }}/.bashrc
     line="alias python='/usr/bin/python3'"
 
 - pip:
-    requirements=/var/www/devserver/webapp/requirements.txt
-    virtualenv=/var/www/devserver/webapp/venv
+    requirements=/opt/solarpi/devserver/requirements.txt
+    virtualenv=/opt/solarpi/devserver/venv
     virtualenv_python=python3
 
 - lineinfile:
     dest=/home/{{ ansible_ssh_user }}/.bashrc
-    line="source /var/www/devserver/webapp/venv/bin/activate"
+    line="source /opt/solarpi/devserver/venv/bin/activate"
+
+- template:
+    src=templates/systemd/solarpi-scheduler-dev.service
+    dest=/lib/systemd/system/solarpi-scheduler-dev.service
+    mode=0644
+  become: yes
+  become_method: sudo
+
+- name: Issue daemon-reload and start the Solarpi Scheduler DEV service
+  systemd:
+    name: solarpi-scheduler-dev
+    state: restarted
+    enabled: yes
+    masked: no
+    daemon_reload: yes
