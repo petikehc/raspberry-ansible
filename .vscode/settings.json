@@ -11,5 +11,5 @@
       "name": "solarpi"
     }
   ],
-  "python.pythonPath": "webapp/venv/bin/python"
+  "python.pythonPath": "webapp/venv/bin/python3"
 }
