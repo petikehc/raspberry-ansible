@@ -5,10 +5,6 @@ After=network-online.target
 [Service]
 ExecStart=/opt/solarpi/venv/bin/python3 /opt/solarpi/scheduler/main.py
 WorkingDirectory=/opt/solarpi/scheduler
-StandardOutput=inherit
-StandardError=inherit
-User=pi
-Type=idle
 Restart=always
 
 [Install]

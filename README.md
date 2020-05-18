@@ -37,3 +37,13 @@ Provision Raspberry Pi
 Run the following command in the ansible directory to configure the Raspberry Pi:
 
 `ansible-playbook solarpi.yml`
+
+Scheduler logs
+---
+Systemd logs can be viewed using journalctl
+
+To view logs for `solarpi-scheduler`:
+`sudo journalctl -u solarpi-scheduler`
+
+To follow logs real-time:
+`sudo journalctl -f -u solarpi-scheduler`
