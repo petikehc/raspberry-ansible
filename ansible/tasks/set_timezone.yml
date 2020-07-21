@@ -1,17 +1,19 @@
 - name: Register current value of Timezone from timedatectl
   shell: timedatectl show -a  | grep -c -E '^Timezone=Australia/Brisbane'
   register: current_timezone
-  changed_when: current_timezone == 0
+  ignore_errors: true
+  changed_when: current_timezone.stdout == '0'
 
 - name: Register current value of NTP from timedatectl
   shell: timedatectl show -a  | grep -c -E '^NTP=yes'
   register: current_ntp
-  changed_when: current_ntp == 0
+  ignore_errors: true
+  changed_when: current_ntp.stdout == '0'
 
 - name: Set time zone to Australia/Brisbane
   shell: timedatectl set-timezone Australia/Brisbane
-  when:  current_timezone == 0
+  when:  current_timezone.stdout == '0'
 
 - name: Turn NTP on
   shell: timedatectl set-ntp True
-  when: current_ntp == 0
+  when: current_ntp.stdout == '0'
