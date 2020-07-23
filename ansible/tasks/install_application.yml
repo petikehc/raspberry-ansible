@@ -19,10 +19,6 @@
     virtualenv=/opt/solarpi/venv
     virtualenv_python=python3
 
-- lineinfile:
-    dest=/home/{{ ansible_ssh_user }}/.bashrc
-    line="source /opt/solarpi/venv/bin/activate"
-
 - template:
     src=templates/systemd/solarpi-scheduler.service
     dest=/lib/systemd/system/solarpi-scheduler.service

@@ -1,0 +1,14 @@
+- name: Install Telegraf packages
+  apt: name=telegraf state=present
+
+- template:
+    src=templates/telegraf/solarpi.conf
+    dest=/etc/telegraf/telegraf.d/solarpi.conf
+    mode=0644
+  become: yes
+  become_method: sudo
+
+- name: reload the Telegraf service
+  systemd:
+    name: telegraf
+    state: reloaded

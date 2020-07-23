@@ -1,4 +1,5 @@
 - hosts: solarpi
+  gather_facts: no
   remote_user: pi
   become: yes
   become_method: sudo
@@ -10,9 +11,15 @@
     - include:
         tasks/install_packages.yml
     - include:
+        tasks/setup_firewall.yml
+    - include:
         tasks/install_influxdb.yml
     - include:
-        tasks/setup_firewall.yml
+        tasks/install_mosquitto.yml
+    - include:
+        tasks/install_telegraf.yml
+    - include:
+        tasks/install_grafana.yml
     - include:
         tasks/enable_i2c.yml
     - include:

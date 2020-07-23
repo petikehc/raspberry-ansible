@@ -1,0 +1,9 @@
+- name: Install Mosquitto packages
+  apt: name=mosquitto state=present
+
+- name: Start the Mosquitto service
+  systemd:
+    name: mosquitto
+    state: started
+    enabled: yes
+    masked: no

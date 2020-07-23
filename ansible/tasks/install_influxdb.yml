@@ -30,5 +30,5 @@
   pause: seconds=50
 
 - name: Create solarpi database
-  command: /usr/bin/influx -execute 'CREATE DATABASE solarpi'
+  command: /usr/bin/influx -execute 'CREATE DATABASE sensors'
   ignore_errors: yes
