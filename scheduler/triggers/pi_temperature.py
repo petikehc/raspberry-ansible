@@ -16,7 +16,7 @@ def read_pi_temperature():
     temperature = match[1]
     logger.debug('Reading PI temperature: %s' % temperature)
 
-    mqtt_client.publish("sensors", "temperature value=%s" % temperature)
+    mqtt_client.publish("sensors", "cpu_temperature value=%s" % temperature)
 
   except FileNotFoundError as e:
     logger.error(e)
